@@ -637,9 +637,19 @@
                 font-size: 12px;
             }
 
+           /* Bot 3D en el centro - 20% MÁS ABAJO */
             .bot-container {
-                width: 220px;
-                height: 220px;
+                position: absolute;
+                width: 280px;
+                height: 280px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                z-index: 10;
+                top: 70%; /* Aumentado de 60% a 70% */
+                left: 50%;
+                transform: translate(-50%, -30%); /* Ajustado para mantener centrado */
             }
 
             .bot-body {
@@ -721,32 +731,40 @@
             </div>
         </div>
 
-        <!-- Opciones alrededor -->
-        <div class="options-container">
-            <div class="option-card option-1" onclick="openModal('experiencia')">
-                <div class="option-icon">💼</div>
-                <div class="option-title">Experiencia</div>
-                <div class="option-desc">Trayectoria profesional</div>
-            </div>
+        
+        <!-- Opciones alrededor CON 5 TARJETAS (INCLUYE CERTIFICADOS) -->
+<div class="options-container">
+    <div class="option-card option-1" onclick="openModal('experiencia')">
+        <div class="option-icon">💼</div>
+        <div class="option-title">Experiencia</div>
+        <div class="option-desc">Trayectoria profesional</div>
+    </div>
 
-            <div class="option-card option-2" onclick="openModal('habilidades')">
-                <div class="option-icon">⚡</div>
-                <div class="option-title">Habilidades</div>
-                <div class="option-desc">Stack técnico y expertise</div>
-            </div>
+    <div class="option-card option-2" onclick="openModal('habilidades')">
+        <div class="option-icon">⚡</div>
+        <div class="option-title">Habilidades</div>
+        <div class="option-desc">Stack técnico y expertise</div>
+    </div>
 
-            <div class="option-card option-3" onclick="openModal('academico')">
-                <div class="option-icon">🚀</div>
-                <div class="option-title">Formación</div>
-                <div class="option-desc">Estudios y certificaciones</div>
-            </div>
+    <!-- NUEVA TARJETA - CERTIFICADOS (POSICIÓN CENTRAL SUPERIOR) -->
+    <div class="option-card" style="top: 10%; left: 50%; transform: translateX(-50%);" onclick="openModal('certificados')">
+        <div class="option-icon">📜</div>
+        <div class="option-title">Certificados</div>
+        <div class="option-desc">Google · Ciberseguridad · Coursera</div>
+    </div>
 
-            <div class="option-card option-4" onclick="openModal('contacto')">
-                <div class="option-icon">📧</div>
-                <div class="option-title">Contacto</div>
-                <div class="option-desc">Información y redes</div>
-            </div>
-        </div>
+    <div class="option-card option-3" onclick="openModal('academico')">
+        <div class="option-icon">🚀</div>
+        <div class="option-title">Formación</div>
+        <div class="option-desc">Estudios y proyectos</div>
+    </div>
+
+    <div class="option-card option-4" onclick="openModal('contacto')">
+        <div class="option-icon">📧</div>
+        <div class="option-title">Contacto</div>
+        <div class="option-desc">Información y redes</div>
+    </div>
+</div>
     </div>
 
     <!-- Modal - MODIFICADO CON TABS -->
@@ -978,60 +996,79 @@
             });
         });
 
-        // ========== DATOS DE LAS SECCIONES ==========
-        const sectionsData = {
-            experiencia: {
-                title: 'Experiencia Profesional',
-                tabs: ['GPO SIAYEC', 'SONDA', 'TELECO'],
-                content: {
-                    'GPO SIAYEC': `💼 <strong>Ingeniero de Soporte en Seguridad Física</strong>\n📍 GPO SIAYEC | Actualidad\n\n• Supervisión y ejecución de mantenimientos preventivos y correctivos in situ para sistemas de seguridad electrónica\n• Soporte técnico especializado en equipos de videovigilancia de gama alta: Hikvision, Honeywell, Axis\n• Implementación y soporte de sistemas de control de acceso Avigilon (ACM)\n• Planeación de rutas de servicio y atención a incidencias, asegurando cumplimiento de SLAs\n• Administración de plataformas de software de gestión de video (VMS) y control de accesos (ACM)`,
+        // ========== DATOS DE LAS SECCIONES (ACTUALIZADO CON CERTIFICADOS) ==========
+const sectionsData = {
+    experiencia: {
+        title: 'Experiencia Profesional',
+        tabs: ['GPO SIAYEC', 'SONDA', 'TELECO', 'Proyecto IA (Independiente)'],
+        content: {
+            'GPO SIAYEC': `💼 <strong>Ingeniero de Soporte en Seguridad Física</strong>\n📍 GPO SIAYEC | Actualidad\n\n• Supervisión y ejecución de mantenimientos preventivos y correctivos in situ para sistemas de seguridad electrónica\n• Soporte técnico especializado en equipos de videovigilancia de gama alta: Hikvision, Honeywell, Axis\n• Implementación y soporte de sistemas de control de acceso Avigilon (ACM)\n• Planeación de rutas de servicio y atención a incidencias, asegurando cumplimiento de SLAs\n• Administración de plataformas de software de gestión de video (VMS) y control de accesos (ACM)`,
+            'SONDA': `💼 <strong>Técnico en Sistemas y Redes</strong>\n📍 SONDA | Proyecto METROBUS\n\n• Implementación y configuración de sistemas de videovigilancia móvil (SAE SONDA) en flota de autobuses del proyecto METROBUS (Volvo y Mercedes Benz)\n• Aseguramiento de calidad (QA) validando instalación y comunicación de equipos con Centro de Control Operacional\n• Mantenimiento preventivo y correctivo de sistemas a bordo\n• Diagnóstico de fallos, reparación y sustitución de cableado y equipos dañados para minimizar tiempo de inactividad`,
+            'TELECO': `💼 <strong>Técnico Instalador de Fibra Óptica</strong>\n📍 TELECO (Afiliada a TELMEX) | 2021-2022\n\n• Ejecuté instalaciones de Fibra Óptica en Red Principal y Secundaria para TELMEX, asegurando la correcta implementación de infraestructura de telecomunicaciones\n• Realicé fusiones de empalmes en CEDOS y terminales especializadas: BMX-CORNING, GIKO ONU-IP65, HUAWEI, SAMSUNG (8 y 16 puertos), TYCO, OFDC-B8G y FLCO\n• Interpreté y ejecuté planos para instalaciones aéreas y subterráneas siguiendo normativa TELMEX\n• Lideré migraciones de Cobre a Fibra Óptica, modernizando la red para mejorar calidad del servicio\n• Realicé pruebas de medición con equipo OTDR, validando escalabilidad de potencia, detectando pérdidas e intermitencias en la red\n• Gestioné visitas a Terminal TELMEX para pruebas de certificación en distintos distritos`,
+            'Proyecto IA (Independiente)': `🤖 <strong>Armado y Optimización de Estación de Trabajo AMD para IA Generativa</strong>\n📌 Proyecto Independiente | 2024\n\nPlataforma de Alto Rendimiento para Desarrollo de IA y Multimedia\n\nConstruí una estación de trabajo AMD optimizada para inteligencia artificial generativa, específicamente para workflows intensivos de Stable Diffusion y ComfyUI en entornos WSL2/ROCm.\n\n<strong>⚙️ Especificaciones Técnicas:</strong>\n\n• <strong>Motherboard:</strong> ASUS TUF Gaming B550M-Plus WiFi II (Chipset B550, AM4, PCIe 4.0, BIOS 3405, WiFi 6)\n• <strong>Procesador:</strong> AMD Ryzen 7 5800X (8 núcleos/16 hilos, 4.7GHz boost, 105W TDP)\n• <strong>Memoria RAM:</strong> 32GB DDR4 2666MHz dual channel (escalable a 128GB)\n• <strong>Tarjeta Gráfica:</strong> AMD Radeon RX 7600 XT (8GB GDDR6 VRAM, PCIe 4.0, optimizada ROCm)\n• <strong>Almacenamiento:</strong> Dual M.2 PCIe 4.0 para datasets de IA\n\n<strong>🚀 Optimizaciones Específicas para IA:</strong>\n\n• <strong>Pipeline de IA Local:</strong> Configuré ROCm en RX 7600 XT para Stable Diffusion nativo AMD, logrando renders 4K ~3x más rápidos vs CPU\n• <strong>Memoria Optimizada:</strong> 32GB RAM + 8GB VRAM habilitan batch processing de +50 imágenes/hora en ComfyUI\n• <strong>BIOS Empresarial:</strong> Activé Precision Boost Overdrive, Resizable BAR y XMP para máximo rendimiento en entrenamiento fino de modelos LoRA\n• <strong>Entorno Híbrido:</strong> WSL2 + Windows 11 con drivers AMDVLK para flujos de trabajo híbridos IA/desktop\n\n<strong>📊 Resultados Cuantificables:</strong>\n\n• Generación de videos IA completos (1080p@30fps) en <8 minutos desde prompts textuales\n• Entrenamiento LoRA personalizado en 45 segundos/época con datasets 1000+ imágenes\n• Multitarea simultánea: ComfyUI + edición Premiere + navegador con 50+ pestañas\n\n💡 Esta configuración representa mi compromiso técnico con la inteligencia artificial práctica, transformando hardware gaming en infraestructura profesional para generación de contenido automatizado mediante IA.`
+        }
+    },
+    
+    habilidades: {
+        title: 'Habilidades Técnicas',
+        tabs: ['Redes y CCTV', 'Ciberseguridad', 'Herramientas', 'Soporte'],
+        content: {
+            'Redes y CCTV': `⚡ <strong>Redes y Sistemas de Seguridad</strong>\n\n• Infraestructura de Redes: Diseño, implementación y administración de redes de datos, cableado estructurado y configuración de equipos Cisco CCNA\n• Sistemas de Videovigilancia (CCTV): Instalación, configuración y mantenimiento de equipos fijos y móviles. Marcas: Hikvision, Honeywell, Axis\n• Sistemas de Control de Acceso: Implementación y soporte en plataforma Avigilon (ACM)\n• Redes Móviles y SAE: Instalación y mantenimiento de sistemas de ayuda al explotador en flotas de transporte público\n• Fibra Óptica: Instalación, fusión de empalmes y certificación con OTDR`,
+            'Ciberseguridad': `🔐 <strong>Ciberseguridad</strong>\n\n• Fundamentos: Principios de seguridad, ética profesional y responsabilidades del analista\n• Gestión de Riesgos: Identificación y evaluación en entornos cloud, implementación de controles y cumplimiento normativo (NIST, HIPAA, SOC)\n• Detección y Respuesta: Monitoreo de seguridad, análisis de alertas, gestión de incidentes y comunicación de crisis\n• Análisis de Vulnerabilidades: Identificación de amenazas como malware, ingeniería social y vulnerabilidades en sistemas`,
+            'Herramientas': `🛠️ <strong>Herramientas y Tecnologías</strong>\n\n• Sistemas Operativos: Linux (administración básica, scripting Bash) y Windows\n• Seguridad: SIEM, IDS, Wireshark\n• Bases de datos: SQL para análisis de información\n• Certificaciones: Google IT Support, Ciberseguridad Google (2025-2026)\n• Equipos especializados: OTDR, fusionadoras de fibra, analizadores de red`,
+            'Soporte': `🔧 <strong>Soporte Técnico y Mantenimiento</strong>\n\n• Soporte TI: Diagnóstico y resolución de problemas en hardware y software\n• Mantenimiento Preventivo y Correctivo: Planeación y ejecución de mantenimientos programados\n• Control de Calidad (QA): Supervisión de instalaciones y validación de funcionamiento con centros de control\n• Gestión de Proyectos en Campo: Planeación de rutas de servicio, coordinación con clientes y cumplimiento de SLAs`
+        }
+    },
+    
+    academico: {
+    title: 'Formación Académica',
+    tabs: ['TSU', 'Bachillerato', 'Google IT', 'Ciberseguridad', 'IA TecNM'],
+    content: {
+        'TSU': `🚀 <strong>TSU en Infraestructura de Redes Digitales</strong>\nUniversidad Tecnológica de Nezahualcóyotl (UTN) | 2019 - 2021\n\nFormación enfocada en diseño, implementación y administración de redes de datos, cableado estructurado y configuración de equipos de conectividad Cisco CCNA.`,
 
-                    'SONDA': `💼 <strong>Técnico en Sistemas y Redes</strong>\n📍 SONDA | Proyecto METROBUS\n\n• Implementación y configuración de sistemas de videovigilancia móvil (SAE SONDA) en flota de autobuses del proyecto METROBUS (Volvo y Mercedes Benz)\n• Aseguramiento de calidad (QA) validando instalación y comunicación de equipos con Centro de Control Operacional\n• Mantenimiento preventivo y correctivo de sistemas a bordo\n• Diagnóstico de fallos, reparación y sustitución de cableado y equipos dañados para minimizar tiempo de inactividad`,
+        'Bachillerato': `📊 <strong>Bachillerato Tecnológico en Informática</strong>\nCETIS No. 37 | 2015 - 2018\n\nFormación técnica en soporte técnico, desarrollo de software básico y administración de sistemas informáticos.`,
 
-                    'TELECO': `💼 <strong>Técnico Instalador de Fibra Óptica</strong>\n📍 TELECO (Afiliada a TELMEX) | 2021-2022\n\n• Ejecuté instalaciones de Fibra Óptica en Red Principal y Secundaria para TELMEX, asegurando la correcta implementación de infraestructura de telecomunicaciones\n• Realicé fusiones de empalmes en CEDOS y terminales especializadas: BMX-CORNING, GIKO ONU-IP65, HUAWEI, SAMSUNG (8 y 16 puertos), TYCO, OFDC-B8G y FLCO\n• Interpreté y ejecuté planos para instalaciones aéreas y subterráneas siguiendo normativa TELMEX\n• Lideré migraciones de Cobre a Fibra Óptica, modernizando la red para mejorar calidad del servicio\n• Realicé pruebas de medición con equipo OTDR, validando escalabilidad de potencia, detectando pérdidas e intermitencias en la red\n• Gestioné visitas a Terminal TELMEX para pruebas de certificación en distintos distritos`
-                }
-            },
-            
-            habilidades: {
-                title: 'Habilidades Técnicas',
-                tabs: ['Redes y CCTV', 'Ciberseguridad', 'Herramientas', 'Soporte'],
-                content: {
-                    'Redes y CCTV': `⚡ <strong>Redes y Sistemas de Seguridad</strong>\n\n• Infraestructura de Redes: Diseño, implementación y administración de redes de datos, cableado estructurado y configuración de equipos Cisco CCNA\n• Sistemas de Videovigilancia (CCTV): Instalación, configuración y mantenimiento de equipos fijos y móviles. Marcas: Hikvision, Honeywell, Axis\n• Sistemas de Control de Acceso: Implementación y soporte en plataforma Avigilon (ACM)\n• Redes Móviles y SAE: Instalación y mantenimiento de sistemas de ayuda al explotador en flotas de transporte público\n• Fibra Óptica: Instalación, fusión de empalmes y certificación con OTDR`,
+        'Google IT': `🔐 <strong>Soporte de Tecnologías de la Información - Google</strong>\n2023\n\nPrograma profesional que abarca fundamentos de soporte TI, administración de sistemas, redes, seguridad y resolución de problemas.`,
 
-                    'Ciberseguridad': `🔐 <strong>Ciberseguridad</strong>\n\n• Fundamentos: Principios de seguridad, ética profesional y responsabilidades del analista\n• Gestión de Riesgos: Identificación y evaluación en entornos cloud, implementación de controles y cumplimiento normativo (NIST, HIPAA, SOC)\n• Detección y Respuesta: Monitoreo de seguridad, análisis de alertas, gestión de incidentes y comunicación de crisis\n• Análisis de Vulnerabilidades: Identificación de amenazas como malware, ingeniería social y vulnerabilidades en sistemas`,
+        'Ciberseguridad': `⚙️ <strong>Certificación en Ciberseguridad - Google</strong>\n2024 - 2026\n\nFormación integral en fundamentos de ciberseguridad, gestión de riesgos y cumplimiento normativo (NIST, HIPAA), autenticación y control de accesos, detección y respuesta a incidentes. Uso práctico de herramientas SIEM, IDS, Wireshark, Python, Bash y SQL.`,
 
-                    'Herramientas': `🛠️ <strong>Herramientas y Tecnologías</strong>\n\n• Sistemas Operativos: Linux (administración básica, scripting Bash) y Windows\n• Seguridad: SIEM, IDS, Wireshark\n• Bases de datos: SQL para análisis de información\n• Certificaciones: Google IT Support, Ciberseguridad Google (2025-2026)\n• Equipos especializados: OTDR, fusionadoras de fibra, analizadores de red`,
+        'IA TecNM': `🤖 <strong>Curso Propedéutico en Inteligencia Artificial</strong>\nTecnológico Nacional de México (TecNM) | 2026\n\n<a href="https://mooc.tecnm.mx/certificates/117dddae76be4dc0b4c5f6bb8efe0d08" target="_blank" style="color: #38bdf8; text-decoration: none; border: 1px solid #38bdf8; padding: 8px 16px; border-radius: 20px; display: inline-block; margin: 10px 0;">🔗 Ver certificado oficial</a>\n\n<strong>Curso MOOC con clave INAR001-CPF que abarca:</strong>\n• Fundamentos teóricos y prácticos de Inteligencia Artificial\n• Diferencias entre IA Generativa (creación de contenido) e IA No Generativa (análisis y predicción)\n• Aplicaciones en la vida real y casos de estudio\n• Desarrollo de proyectos prácticos con herramientas de IA\n\n<strong>🎯 Proyecto destacado:</strong> Como parte del curso, desarrollé un sitio web completo utilizando exclusivamente IA generativa a través de prompts, demostrando la capacidad de la tecnología para crear soluciones funcionales desde cero. El proyecto integra conceptos de diseño, desarrollo y optimización mediante inteligencia artificial.\n\n<a href="URL_DEL_SITIO_WEB" target="_blank" style="color: #38bdf8; text-decoration: none; border: 1px solid #38bdf8; padding: 8px 16px; border-radius: 20px; display: inline-block; margin: 10px 0;">🌐 Ver sitio web creado con IA</a>`
+        }
+    },
+        
+    // ========== NUEVA SECCIÓN DE CERTIFICADOS ==========
+    certificados: {
+    title: 'Certificados Profesionales',
+    tabs: ['Google IT', 'Detección', 'Hikvision HCSA', 'IA TecNM', 'Ciberseguridad 1', 'Ciberseguridad 2', 'Ciberseguridad 3', 'Ciberseguridad 4'],
+    content: {
+        'Google IT': `🔐 <strong>Certificado Profesional de Soporte TI - Google</strong>\n📅 Completado: 17 de junio, 2023\n\n<a href="https://coursera.org/verify/professional-cert/VEGTEV26E2ET" target="_blank" style="color: #38bdf8; text-decoration: none; border: 1px solid #38bdf8; padding: 8px 16px; border-radius: 20px; display: inline-block; margin: 10px 0;">🔗 Ver certificado en Coursera</a>\n\n<strong>Cursos incluidos:</strong>\n• Aspectos básicos de asistencia técnica\n• Bits y bytes de redes informáticas\n• Sistemas operativos\n• Administración de sistemas\n• Seguridad informática\n\n<strong>Habilidades adquiridas:</strong>\n• Soporte TI profesional\n• Redes y conectividad\n• Linux y Windows\n• Resolución de problemas\n• Defensa contra amenazas digitales`,
 
-                    'Soporte': `🔧 <strong>Soporte Técnico y Mantenimiento</strong>\n\n• Soporte TI: Diagnóstico y resolución de problemas en hardware y software\n• Mantenimiento Preventivo y Correctivo: Planeación y ejecución de mantenimientos programados\n• Control de Calidad (QA): Supervisión de instalaciones y validación de funcionamiento con centros de control\n• Gestión de Proyectos en Campo: Planeación de rutas de servicio, coordinación con clientes y cumplimiento de SLAs`
-                }
-            },
-            
-            academico: {
-                title: 'Formación Académica',
-                tabs: ['TSU', 'Bachillerato', 'Google IT', 'Ciberseguridad'],
-                content: {
-                    'TSU': `🚀 <strong>TSU en Infraestructura de Redes Digitales</strong>\nUniversidad Tecnológica de Nezahualcóyotl (UTN) | 2019 - 2021\n\nFormación enfocada en diseño, implementación y administración de redes de datos, cableado estructurado y configuración de equipos de conectividad Cisco CCNA.`,
+        'Detección': `🚨 <strong>Haz sonar la alarma: Detección y respuesta</strong>\n📅 Completado: 7 de julio, 2025\n\n<a href="https://coursera.org/verify/M0ZKXMS9W45P" target="_blank" style="color: #38bdf8; text-decoration: none; border: 1px solid #38bdf8; padding: 8px 16px; border-radius: 20px; display: inline-block; margin: 10px 0;">🔗 Ver certificado en Coursera</a>\n\n<strong>Habilidades adquiridas:</strong>\n• Caza de amenazas y gestión de incidentes\n• Monitoreo de eventos y detección de amenazas\n• Documentación técnica y gestión de incidentes SIEM\n• Monitoreo de redes y protocolos de red\n• Análisis de redes TCP/IP\n• Monitoreo continuo de seguridad`,
 
-                    'Bachillerato': `📊 <strong>Bachillerato Tecnológico en Informática</strong>\nCETIS No. 37 | 2015 - 2018\n\nFormación técnica en soporte técnico, desarrollo de software básico y administración de sistemas informáticos.`,
+        'Hikvision HCSA': `📹 <strong>Hikvision Certified Security Associate (HCSA-CCTV)</strong>\n📅 Válido hasta: Junio 2027\n📍 Grupo Siayec\n\n<div style="background: rgba(56, 189, 248, 0.1); padding: 15px; border-radius: 12px; margin: 15px 0;">\n    <strong>Número de certificación:</strong> HCSA-062025-0052-06-1366\n</div>\n\n<strong>Certificación oficial de Hikvision en:</strong>\n• Sistemas de videovigilancia CCTV\n• Configuración de equipos Hikvision\n• Diseño de soluciones de seguridad\n• Instalación y mantenimiento\n• Protocolos de red para videovigilancia`,
 
-                    'Google IT': `🔐 <strong>Soporte de Tecnologías de la Información - Google</strong>\n2022\n\nPrograma profesional que abarca fundamentos de soporte TI, administración de sistemas, redes, seguridad y resolución de problemas.`,
+        'IA TecNM': `🤖 <strong>Propedéutico en Inteligencia Artificial</strong>\n📅 Completado: 20 de enero, 2026\n📍 Tecnológico Nacional de México (TecNM)\n\n<a href="https://mooc.tecnm.mx/certificates/117dddae76be4dc0b4c5f6bb8efe0d08" target="_blank" style="color: #38bdf8; text-decoration: none; border: 1px solid #38bdf8; padding: 8px 16px; border-radius: 20px; display: inline-block; margin: 10px 0;">🔗 Ver certificado TecNM</a>\n\n<strong>Curso Masivo Abierto en Línea (MOOC) con clave:</strong> INAR001-CPF\n\n<strong>Temario cubierto:</strong>\n• Fundamentos de Inteligencia Artificial\n• IA Generativa vs IA No Generativa\n• Aplicaciones prácticas de IA\n• Ética y futuro de la IA\n• Desarrollo de proyectos con IA\n\n<strong>🎯 Proyecto destacado:</strong> Sitio web desarrollado desde cero con IA generativa, disponible en:\n<a href="URL_DEL_SITIO_WEB" target="_blank" style="color: #38bdf8; text-decoration: none; border: 1px solid #38bdf8; padding: 8px 16px; border-radius: 20px; display: inline-block; margin: 10px 0;">🌐 Ver sitio web creado con IA</a>`,
 
-                    'Ciberseguridad': `⚙️ <strong>Certificación en Ciberseguridad - Google</strong>\n2025 - 2026\n\nFormación integral en fundamentos de ciberseguridad, gestión de riesgos y cumplimiento normativo (NIST, HIPAA), autenticación y control de accesos, detección y respuesta a incidentes. Uso práctico de herramientas SIEM, IDS, Wireshark, Python, Bash y SQL.`
-                }
-            },
-            
-            contacto: {
-                title: 'Información de Contacto',
-                tabs: ['Contacto', 'Notas'],
-                content: {
-                    'Contacto': `📧 <strong>Email:</strong> zomboy327@gmail.com\n\n📱 <strong>Teléfonos:</strong> 55-6484-9342 | 56-4115-2535\n\n💼 <strong>LinkedIn:</strong> linkedin.com/in/ian-reyes-tlatelpa-4295a2204`,
+        'Ciberseguridad 1': `⚠️ <strong>Gestión de Riesgos y Cumplimiento</strong>\n📅 [Fecha del certificado 2ffdbb...]\n\n<a href="https://coursera.org/share/2ffdbb92681a77d026f528c03724b178" target="_blank" style="color: #38bdf8; text-decoration: none; border: 1px solid #38bdf8; padding: 8px 16px; border-radius: 20px; display: inline-block; margin: 10px 0;">🔗 Ver certificado en Coursera</a>\n\n<strong>Habilidades clave:</strong>\n• Identificación y evaluación de riesgos\n• Marcos de cumplimiento (NIST, HIPAA, SOC)\n• Implementación de controles de seguridad\n• Gestión de riesgos en entornos cloud`,
 
-                    'Notas': `🌟 <strong>¡Conectemos!</strong>\n\nEstoy disponible para nuevas oportunidades laborales en:\n• Instalación y mantenimiento de redes\n• Sistemas de seguridad electrónica\n• Soporte técnico especializado\n• Ciberseguridad (nivel inicial)\n\n📌 ¡Hablemos sobre cómo puedo aportar valor a tu equipo!\n\n📱 Respuesta rápida por WhatsApp o llamada.`
-                }
-            }
-        };
+        'Ciberseguridad 2': `🌐 <strong>Redes y Comunicaciones Seguras</strong>\n📅 [Fecha del certificado 6e3775...]\n\n<a href="https://coursera.org/share/6e3775e4c995df0c96bec400c9e63403" target="_blank" style="color: #38bdf8; text-decoration: none; border: 1px solid #38bdf8; padding: 8px 16px; border-radius: 20px; display: inline-block; margin: 10px 0;">🔗 Ver certificado en Coursera</a>\n\n<strong>Habilidades clave:</strong>\n• Protocolos de red y comunicaciones seguras\n• Análisis de tráfico con Wireshark\n• Configuración de firewalls y VPNs\n• Segmentación de red y Zero Trust`,
 
-        // Función para crear pestañas
+        'Ciberseguridad 3': `🛡️ <strong>Protección de Activos y Datos</strong>\n📅 [Fecha del certificado d75ba4...]\n\n<a href="https://coursera.org/share/d75ba4babd8a7935e10b097a472aceb5" target="_blank" style="color: #38bdf8; text-decoration: none; border: 1px solid #38bdf8; padding: 8px 16px; border-radius: 20px; display: inline-block; margin: 10px 0;">🔗 Ver certificado en Coursera</a>\n\n<strong>Habilidades clave:</strong>\n• Clasificación y gestión de activos\n• Cifrado y protección de datos\n• Gestión de identidades y accesos (IAM)\n• Prevención de pérdida de datos (DLP)`,
+
+        'Ciberseguridad 4': `🔐 <strong>Fundamentos de la ciberseguridad</strong>\n📅 Completado: 9 de junio, 2024\n\n<a href="https://coursera.org/share/bf62495a541a6be50b8890d29c6648cb" target="_blank" style="color: #38bdf8; text-decoration: none; border: 1px solid #38bdf8; padding: 8px 16px; border-radius: 20px; display: inline-block; margin: 10px 0;">🔗 Ver certificado en Coursera</a>\n\n<strong>Habilidades adquiridas:</strong>\n• Análisis de inteligencia de ciberamenazas\n• Controles y ética de seguridad\n• Comprensión de ciberataques y gestión de amenazas\n• Conciencia de seguridad y privacidad de la información\n• Análisis de redes y fundamentos de SIEM\n• Respuesta a incidentes y consultas SQL`
+        }
+    },
+        
+    contacto: {
+        title: 'Información de Contacto',
+        tabs: ['Contacto', 'Notas'],
+        content: {
+            'Contacto': `📧 <strong>Email:</strong> zomboy327@gmail.com\n\n📱 <strong>Teléfonos:</strong> 55-6484-9342 | 56-4115-2535\n\n💼 <strong>LinkedIn:</strong> linkedin.com/in/ian-reyes-tlatelpa-4295a2204`,
+            'Notas': `🌟 <strong>¡Conectemos!</strong>\n\nEstoy disponible para nuevas oportunidades laborales en:\n• Instalación y mantenimiento de redes\n• Sistemas de seguridad electrónica\n• Soporte técnico especializado\n• Ciberseguridad (nivel inicial)\n\n📌 ¡Hablemos sobre cómo puedo aportar valor a tu equipo!\n\n📱 Respuesta rápida por WhatsApp o llamada.`
+        }
+    }
+};
+
         function createTabs(sectionId) {
             const data = sectionsData[sectionId];
             const modalTitle = document.getElementById('modalTitle');
