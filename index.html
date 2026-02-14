@@ -617,7 +617,7 @@
         }
 
         /* Responsive */
-        /* Responsive para iPhone Pro y móviles similares */
+       /* Responsive */
 @media (max-width: 768px) {
     /* Reducir tamaño de tarjetas */
     .option-card {
@@ -644,9 +644,9 @@
 
     /* Bot más abajo */
     .bot-container {
-        top: 75%;
-        left: 50%;
-        transform: translate(-50%, -25%);
+        top: 70% !important;
+        left: 50% !important;
+        transform: translate(-50%, -25%) !important;
         width: 240px;
         height: 240px;
     }
@@ -674,22 +674,11 @@
         max-width: 200px;
     }
 
-    /* REORGANIZACIÓN DE TARJETAS PARA IPHONE PRO */
-    /* Distribución en forma de U alrededor del bot */
-    
-    .option-1 { /* Experiencia - Superior izquierdo */
-        top: 15%;
-        left: 5%;
-    }
-    
-    .option-2 { /* Habilidades - Superior derecho */
-        top: 15%;
-        right: 5%;
-    }
-    
-    /* Tarjeta central - Certificados */
+    /* REORGANIZACIÓN DE TARJETAS */
+    /* Eliminar estilos inline problemáticos */
     .option-card[onclick*="certificados"] {
-        top: 40% !important;
+        position: absolute !important;
+        top: 35% !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
         width: 140px;
@@ -698,50 +687,105 @@
         border: 2px solid var(--color-accent);
     }
     
-    .option-3 { /* Formación - Inferior izquierdo */
-        bottom: 25%;
-        left: 5%;
+    .option-1 { /* Experiencia */
+        top: 10% !important;
+        left: 5% !important;
+        bottom: auto !important;
+        right: auto !important;
     }
     
-    .option-4 { /* Contacto - Inferior derecho */
-        bottom: 25%;
-        right: 5%;
+    .option-2 { /* Habilidades */
+        top: 10% !important;
+        right: 5% !important;
+        bottom: auto !important;
+        left: auto !important;
     }
+    
+    .option-3 { /* Formación */
+        bottom: 20% !important;
+        left: 5% !important;
+        top: auto !important;
+        right: auto !important;
+    }
+    
+    .option-4 { /* Contacto */
+        bottom: 20% !important;
+        right: 5% !important;
+        top: auto !important;
+        left: auto !important;
+    }
+}
 
-    /* Ajustes del modal para móvil */
-    .modal-content {
-        padding: 20px;
-        width: 92%;
-        max-height: 85vh;
+/* Ajustes específicos para iPhone Pro */
+@media (max-width: 450px) {
+    .option-card {
+        width: 115px;
+        padding: 10px;
     }
     
-    .modal-header {
-        font-size: 22px;
-        margin-bottom: 15px;
+    .option-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
     }
     
-    .modal-tabs {
-        gap: 5px;
-        margin-bottom: 15px;
-    }
-    
-    .modal-tab {
-        padding: 6px 10px;
+    .option-title {
         font-size: 11px;
     }
     
-    .modal-content-inner {
-        max-height: 45vh;
+    .option-desc {
+        font-size: 9px;
     }
     
-    .modal-text {
-        font-size: 13px;
+    .bot-container {
+        top: 68% !important;
+        transform: translate(-50%, -22%) !important;
     }
     
-    .modal-close {
-        padding: 10px 24px;
+    .option-1 { top: 8% !important; left: 3% !important; }
+    .option-2 { top: 8% !important; right: 3% !important; }
+    .option-3 { bottom: 25% !important; left: 3% !important; }
+    .option-4 { bottom: 25% !important; right: 3% !important; }
+    
+    .option-card[onclick*="certificados"] {
+        top: 32% !important;
+        width: 125px;
+    }
+}
+
+/* Ajuste para pantallas muy pequeñas */
+@media (max-width: 350px) {
+    .option-card {
+        width: 100px;
+        padding: 8px;
+    }
+    
+    .option-icon {
+        width: 28px;
+        height: 28px;
         font-size: 14px;
-        margin-top: 15px;
+    }
+    
+    .option-title {
+        font-size: 10px;
+    }
+    
+    .option-desc {
+        font-size: 8px;
+    }
+    
+    .bot-container {
+        top: 65% !important;
+    }
+    
+    .option-1 { top: 5% !important; left: 2% !important; }
+    .option-2 { top: 5% !important; right: 2% !important; }
+    .option-3 { bottom: 30% !important; left: 2% !important; }
+    .option-4 { bottom: 30% !important; right: 2% !important; }
+    
+    .option-card[onclick*="certificados"] {
+        top: 28% !important;
+        width: 110px;
     }
 }
 
