@@ -617,75 +617,202 @@
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .option-card {
-                width: 140px;
-                padding: 16px;
-            }
-            
-            .option-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-            }
-            
-            .option-title {
-                font-size: 14px;
-            }
-            
-            .option-desc {
-                font-size: 12px;
-            }
+        /* Responsive para iPhone Pro y móviles similares */
+@media (max-width: 768px) {
+    /* Reducir tamaño de tarjetas */
+    .option-card {
+        width: 130px;
+        padding: 12px;
+    }
+    
+    .option-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+    
+    .option-title {
+        font-size: 12px;
+        margin-bottom: 4px;
+    }
+    
+    .option-desc {
+        font-size: 10px;
+        line-height: 1.3;
+    }
 
-           /* Bot 3D en el centro - 20% MÁS ABAJO */
-            .bot-container {
-                position: absolute;
-                width: 280px;
-                height: 280px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                z-index: 10;
-                top: 70%; /* Aumentado de 60% a 70% */
-                left: 50%;
-                transform: translate(-50%, -30%); /* Ajustado para mantener centrado */
-            }
+    /* Bot más abajo */
+    .bot-container {
+        top: 75%;
+        left: 50%;
+        transform: translate(-50%, -25%);
+        width: 240px;
+        height: 240px;
+    }
 
-            .bot-body {
-                width: 120px;
-                height: 140px;
-            }
+    .bot-body {
+        width: 100px;
+        height: 120px;
+    }
 
-            .bot-head {
-                width: 80px;
-                height: 80px;
-            }
+    .bot-head {
+        width: 70px;
+        height: 70px;
+    }
 
-            .bot-torso {
-                width: 100px;
-                height: 65px;
-            }
+    .bot-torso {
+        width: 90px;
+        height: 60px;
+        top: 70px;
+    }
+    
+    .bot-message {
+        margin-top: 150px;
+        font-size: 12px;
+        padding: 8px 16px;
+        max-width: 200px;
+    }
 
-            .option-1 { top: 8%; left: 3%; }
-            .option-2 { top: 8%; right: 3%; }
-            .option-3 { bottom: 15%; left: 3%; }
-            .option-4 { bottom: 15%; right: 3%; }
+    /* REORGANIZACIÓN DE TARJETAS PARA IPHONE PRO */
+    /* Distribución en forma de U alrededor del bot */
+    
+    .option-1 { /* Experiencia - Superior izquierdo */
+        top: 15%;
+        left: 5%;
+    }
+    
+    .option-2 { /* Habilidades - Superior derecho */
+        top: 15%;
+        right: 5%;
+    }
+    
+    /* Tarjeta central - Certificados */
+    .option-card[onclick*="certificados"] {
+        top: 40% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 140px;
+        z-index: 20;
+        background: var(--color-bg-surface);
+        border: 2px solid var(--color-accent);
+    }
+    
+    .option-3 { /* Formación - Inferior izquierdo */
+        bottom: 25%;
+        left: 5%;
+    }
+    
+    .option-4 { /* Contacto - Inferior derecho */
+        bottom: 25%;
+        right: 5%;
+    }
 
-            .modal-content {
-                padding: 20px;
-                width: 95%;
-            }
+    /* Ajustes del modal para móvil */
+    .modal-content {
+        padding: 20px;
+        width: 92%;
+        max-height: 85vh;
+    }
+    
+    .modal-header {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    
+    .modal-tabs {
+        gap: 5px;
+        margin-bottom: 15px;
+    }
+    
+    .modal-tab {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+    
+    .modal-content-inner {
+        max-height: 45vh;
+    }
+    
+    .modal-text {
+        font-size: 13px;
+    }
+    
+    .modal-close {
+        padding: 10px 24px;
+        font-size: 14px;
+        margin-top: 15px;
+    }
+}
 
-            .modal-tabs {
-                gap: 5px;
-            }
+/* Ajustes específicos para iPhone Pro (390px) y pantallas muy pequeñas */
+@media (max-width: 450px) {
+    .option-card {
+        width: 115px;
+        padding: 10px;
+    }
+    
+    .option-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+    
+    .option-title {
+        font-size: 11px;
+    }
+    
+    .option-desc {
+        font-size: 9px;
+    }
+    
+    .bot-container {
+        top: 72%;
+        transform: translate(-50%, -22%);
+    }
+    
+    .option-1 { top: 12%; left: 3%; }
+    .option-2 { top: 12%; right: 3%; }
+    .option-3 { bottom: 28%; left: 3%; }
+    .option-4 { bottom: 28%; right: 3%; }
+    
+    /* La tarjeta de certificados se mantiene centrada */
+    .option-card[onclick*="certificados"] {
+        top: 38% !important;
+        width: 125px;
+    }
+}
 
-            .modal-tab {
-                padding: 6px 12px;
-                font-size: 12px;
-            }
-        }
+/* Ajuste para pantallas muy pequeñas (menos de 350px) */
+@media (max-width: 350px) {
+    .option-card {
+        width: 100px;
+        padding: 8px;
+    }
+    
+    .option-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+    
+    .option-title {
+        font-size: 10px;
+    }
+    
+    .option-desc {
+        font-size: 8px;
+    }
+    
+    .bot-container {
+        top: 70%;
+    }
+    
+    .option-1 { top: 10%; left: 2%; }
+    .option-2 { top: 10%; right: 2%; }
+    .option-3 { bottom: 30%; left: 2%; }
+    .option-4 { bottom: 30%; right: 2%; }
+}
     </style>
 </head>
 <body>
